@@ -16,4 +16,5 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-co
 ENV AUTH_URL "https://gcr.io"
 
 COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
