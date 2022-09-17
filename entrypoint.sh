@@ -1,8 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-echo "Authenticating with $AUTH_URL"
-docker login -u _json_key -p "$(cat service-account.json)" "$AUTH_URL"
+# auth with service account
+if [ -f service-account.json ]; then
+    echo "Authenticating with $AUTH_URL"
+    docker login -u _json_key -p "$(cat service-account.json)" "$AUTH_URL"
+fi
 
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
